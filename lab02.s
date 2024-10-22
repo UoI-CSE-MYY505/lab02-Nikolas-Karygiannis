@@ -10,8 +10,19 @@ array: .word 1, 0, 1, 12, 0, 1, 4
     li a2, 1
 prog:
 #-----------------------------
-# Write your code here!
-# Do not remove the prog label or write code above it!
+find:
+    beq a1, zero, equal_0
+    slli s0,a1,2
+    add s0 ,s0 ,a0
+
+loop:
+    addi s0,s0,-4
+    lw t1,0(s0)
+    beq t1,a2 ,done
+    bne s0,a0,loop 
+
+equal_0:
+    add s0,zero, zero  
 #-----------------------------
 done:
     addi a7, zero, 10 
